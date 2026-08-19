@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ .Site.Title }}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #0b0c10;
+      color: #c5c6c7;
+      font-family: monospace;
+    }
+    .neon-text {
+      text-shadow: 0 0 10px rgba(102, 252, 241, 0.5), 0 0 20px rgba(102, 252, 241, 0.3);
+    }
+  </style>
+</head>
+<body class="h-screen w-screen flex flex-col justify-between relative overflow-hidden bg-cover bg-center" style="background-image: radial-gradient(circle at center, #1a1c23 0%, #08090c 100%);">
+
+  <!-- Absolute Floating Header (Does Not Push Content Down) -->
+  <header class="absolute top-0 right-0 p-6 z-50">
+    <nav class="bg-gray-900/60 backdrop-blur-md border border-cyan-500/30 rounded-lg px-6 py-2 shadow-lg shadow-cyan-500/10">
+      <ul class="flex space-x-6 text-sm uppercase tracking-widest">
+        {{ range .Site.Menus.main }}
+        <li>
+          <a href="{{ .URL }}" class="hover:text-cyan-400 transition-colors duration-200">
+            {{ .Name }}
+          </a>
+        </li>
+        {{ end }}
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Centered Hero Section -->
+  <main class="flex-grow flex flex-col items-center justify-center text-center px-4 z-10 my-auto">
+    
+    <!-- Image with Dual Glow -->
+    <div class="relative flex justify-center items-center">
+      <img src="{{ "images/logo.png" | relURL }}" 
+           alt="Team Logo" 
+           class="w-auto h-[78vh] max-w-[95vw] object-contain drop-shadow-[0_0_40px_rgba(102,252,241,0.45)] drop-shadow-[0_0_80px_rgba(147,51,234,0.3)]">
+    </div>
+
+    <!-- Title Directly Beneath Image -->
+    <div class="-mt-4 md:-mt-6 z-20 pointer-events-none">
+      <h1 class="text-4xl md:text-6xl font-extrabold tracking-wider text-white neon-text uppercase drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">
+        R4VEN.GUN
+      </h1>
+    </div>
+
+  </main>
+
+  <!-- Footer Floating at Bottom -->
+  <footer class="absolute bottom-0 w-full text-center py-3 text-xs text-gray-500 border-t border-gray-800/50 z-10 bg-gray-950/40 backdrop-blur-sm">
+    <p>&copy; {{ now.Format "2006" }} {{ .Site.Title }}. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

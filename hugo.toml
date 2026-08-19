@@ -1,0 +1,22 @@
+baseURL = 'https://F3nr1rrr.github.io/'
+languageCode = 'en-us'
+title = 'r4ven.gun'
+theme = 'PaperMod'
+
+[menu]
+  [[menu.main]]
+    name = 'About Us'
+    url = '/about/'
+    weight = 1
+  [[menu.main]]
+    name = 'Write-ups'
+    url = '/writeups/'
+    weight = 2
+  [[menu.main]]
+    name = 'Blogs'
+    url = '/blogs/'
+    weight = 3
+  [[menu.main]]
+    name = 'Achievements'
+    url = '/achievements/'
+    weight = 4
