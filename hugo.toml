@@ -1,7 +1,7 @@
 baseURL = 'https://f3nr1rrr.github.io/r4ven.gun/'
 languageCode = 'en-us'
 title = 'r4ven.gun'
-theme = 'PaperMod'
+#theme = 'PaperMod'
 
 [menu]
   [[menu.main]]
