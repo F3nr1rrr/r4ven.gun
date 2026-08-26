@@ -36,21 +36,26 @@
     </nav>
   </header>
 
-  <!-- Section Cards List -->
+  <!-- Main List Section -->
   <main class="flex-grow max-w-4xl w-full mx-auto px-6 py-12 z-10">
-    <h1 class="text-3xl font-extrabold text-white neon-text uppercase mb-8 border-b border-cyan-500/20 pb-4">
-      {{ .Title }}
-    </h1>
+    <div class="bg-gray-900/40 backdrop-blur-sm border border-cyan-500/20 rounded-xl p-8 shadow-2xl shadow-cyan-500/5">
+      
+      <!-- Big Cyber Header -->
+      <h1 class="text-4xl font-extrabold text-white neon-text uppercase tracking-wider mb-6 pb-4 border-b border-cyan-500/30">
+        {{ .Title }}
+      </h1>
 
-    <div class="grid gap-4">
-      {{ range .Pages }}
-      <a href="{{ .RelPermalink }}" class="block bg-gray-900/40 backdrop-blur-sm border border-cyan-500/20 hover:border-cyan-400 rounded-xl p-6 transition-all duration-200 hover:scale-[1.01]">
-        <h2 class="text-xl font-bold text-cyan-400 mb-2">{{ .Title }}</h2>
-        <p class="text-sm text-gray-400">{{ .Summary | truncate 150 }}</p>
-      </a>
-      {{ else }}
-      <p class="text-gray-500">No posts published yet in this section.</p>
-      {{ end }}
+      <div class="grid gap-4">
+        {{ range .Pages }}
+        <a href="{{ .RelPermalink }}" class="block bg-gray-900/60 border border-cyan-500/20 hover:border-cyan-400 rounded-lg p-5 transition-all duration-200 hover:scale-[1.01]">
+          <h2 class="text-xl font-bold text-cyan-400 mb-1">{{ .Title }}</h2>
+          <p class="text-sm text-gray-400">{{ .Summary | truncate 150 }}</p>
+        </a>
+        {{ else }}
+        <p class="text-gray-400 py-4">No posts published yet in this section.</p>
+        {{ end }}
+      </div>
+
     </div>
   </main>
 
