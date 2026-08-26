@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ .Title }} | {{ .Site.Title }}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #0b0c10;
+      color: #c5c6c7;
+      font-family: monospace;
+    }
+    .neon-text {
+      text-shadow: 0 0 10px rgba(102, 252, 241, 0.5), 0 0 20px rgba(102, 252, 241, 0.3);
+    }
+    /* Style rendered markdown headers & lists */
+    .content h1 { font-size: 2.25rem; font-weight: 800; color: #ffffff; margin-top: 1.5rem; margin-bottom: 1rem; }
+    .content h2 { font-size: 1.75rem; font-weight: 700; color: #66fcf1; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+    .content h3 { font-size: 1.25rem; font-weight: 600; color: #66fcf1; margin-top: 1.25rem; margin-bottom: 0.5rem; }
+    .content p { margin-bottom: 1rem; line-height: 1.7; }
+    .content ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { margin-bottom: 0.5rem; }
+    .content strong { color: #ffffff; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between bg-cover bg-center" style="background-image: radial-gradient(circle at center, #1a1c23 0%, #08090c 100%);">
+
+  <!-- Header / Navbar -->
+  <header class="w-full p-6 flex justify-between items-center z-50">
+    <a href="{{ .Site.BaseURL }}" class="text-xl font-bold text-white neon-text tracking-widest uppercase">
+      {{ .Site.Title }}
+    </a>
+    <nav class="bg-gray-900/60 backdrop-blur-md border border-cyan-500/30 rounded-lg px-6 py-2 shadow-lg shadow-cyan-500/10">
+      <ul class="flex space-x-6 text-sm uppercase tracking-widest">
+        {{ range .Site.Menus.main }}
+        <li>
+          <a href="{{ .URL }}" class="hover:text-cyan-400 transition-colors duration-200">
+            {{ .Name }}
+          </a>
+        </li>
+        {{ end }}
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Page Content -->
+  <main class="flex-grow max-w-4xl w-full mx-auto px-6 py-12 z-10">
+    <div class="bg-gray-900/40 backdrop-blur-sm border border-cyan-500/20 rounded-xl p-8 shadow-2xl">
+      <h1 class="text-3xl font-extrabold text-white neon-text uppercase mb-6 pb-4 border-b border-cyan-500/20">
+        {{ .Title }}
+      </h1>
+      <div class="content">
+        {{ .Content }}
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full text-center py-3 text-xs text-gray-500 border-t border-gray-800/50 z-10 bg-gray-950/40 backdrop-blur-sm">
+    <p>&copy; {{ now.Format "2006" }} {{ .Site.Title }}. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

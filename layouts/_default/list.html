@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ .Title }} | {{ .Site.Title }}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #0b0c10;
+      color: #c5c6c7;
+      font-family: monospace;
+    }
+    .neon-text {
+      text-shadow: 0 0 10px rgba(102, 252, 241, 0.5), 0 0 20px rgba(102, 252, 241, 0.3);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between bg-cover bg-center" style="background-image: radial-gradient(circle at center, #1a1c23 0%, #08090c 100%);">
+
+  <!-- Header / Navbar -->
+  <header class="w-full p-6 flex justify-between items-center z-50">
+    <a href="{{ .Site.BaseURL }}" class="text-xl font-bold text-white neon-text tracking-widest uppercase">
+      {{ .Site.Title }}
+    </a>
+    <nav class="bg-gray-900/60 backdrop-blur-md border border-cyan-500/30 rounded-lg px-6 py-2 shadow-lg shadow-cyan-500/10">
+      <ul class="flex space-x-6 text-sm uppercase tracking-widest">
+        {{ range .Site.Menus.main }}
+        <li>
+          <a href="{{ .URL }}" class="hover:text-cyan-400 transition-colors duration-200">
+            {{ .Name }}
+          </a>
+        </li>
+        {{ end }}
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Section Cards List -->
+  <main class="flex-grow max-w-4xl w-full mx-auto px-6 py-12 z-10">
+    <h1 class="text-3xl font-extrabold text-white neon-text uppercase mb-8 border-b border-cyan-500/20 pb-4">
+      {{ .Title }}
+    </h1>
+
+    <div class="grid gap-4">
+      {{ range .Pages }}
+      <a href="{{ .RelPermalink }}" class="block bg-gray-900/40 backdrop-blur-sm border border-cyan-500/20 hover:border-cyan-400 rounded-xl p-6 transition-all duration-200 hover:scale-[1.01]">
+        <h2 class="text-xl font-bold text-cyan-400 mb-2">{{ .Title }}</h2>
+        <p class="text-sm text-gray-400">{{ .Summary | truncate 150 }}</p>
+      </a>
+      {{ else }}
+      <p class="text-gray-500">No posts published yet in this section.</p>
+      {{ end }}
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full text-center py-3 text-xs text-gray-500 border-t border-gray-800/50 z-10 bg-gray-950/40 backdrop-blur-sm">
+    <p>&copy; {{ now.Format "2006" }} {{ .Site.Title }}. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
